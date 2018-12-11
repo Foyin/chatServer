@@ -1,4 +1,51 @@
 $(function() { 
+
+  var FADE_TIME = 150; // ms
+  var TYPING_TIMER_LENGTH = 400; // ms
+  var COLORS = [
+    '#e21400', '#91580f', '#f8a700', '#f78b00',
+    '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
+    '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
+  ];
+
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green"],
+        datasets: [{
+            data: [12, 19, 3, 5],
+            label: '# of Votes',
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+  });
+
   
   // Initialize variables
   var $window = $(window);
@@ -24,10 +71,6 @@ $(function() {
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
   var enterKey = jQuery.Event("keydown");
-  var userAgent = window.navigator.userAgent;
-  if(userAgent.includes("iPhone") || userAgent.includes("iPad") || userAgent.includes("Android")){
-     alert("Switch To Landscape Mode");
-  }
   enterKey.which = 13;
 
   var socket = io();
@@ -64,6 +107,10 @@ $(function() {
       responsiveVoice.speak("Welcome");
       $("#userBtn").text(username);
       $loginPage.fadeOut();
+      if(window.navigator.userAgent.includes("iPhone")){
+        console.log("iphone connected");
+        alert("Works Best In Landscape");
+      }
       $chatPage.show();
       $loginPage.off('click');
       $currentInput = $inputMessage.focus();
@@ -332,9 +379,9 @@ $(function() {
      $(".sidePanel").css("color", "#D6DBDF");
   }
 
-  var lightMode = function(){
+  var nightMode3 = function(){
      nMode.text(nMode.data("text-swap"));
-     $(".btn").css("background-color", "white");
+     $(".btn").css("background-color", "#3498DB");
      $(".btn").css("border-color", "black");
      $(".btn").css("color", "#D6DBDF");
      $(".options").css("background-color", "#154360");
@@ -373,7 +420,7 @@ $(function() {
   $(".btn").click(function(){
      if(this.id === "nMode"){  
         if(btnState === 0){
-             lightMode();
+             nightMode2();
              btnState = 1;
         }
         else{

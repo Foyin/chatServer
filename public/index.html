@@ -14,7 +14,7 @@
                  <button href='#'  id="uploadBtn" type="button">Uploads</button>
                  <button href='#'  id="downloadBtn" type="button">Dowloads</button>
                  <button href='#'  id="vBtn" type="button">VideoChat</button>
-                 <button href='#'  id="WBtn" type="button">Whiteboard</button>
+                 <button href='#'  id="WBtn" type="button">Brick Breaker</button>
                  <button href='#'  id="nMode" data-text-swap="Night Mode" type="button">Light Mode</button>
               </div>
 	      <div class="chatArea">
@@ -23,19 +23,29 @@
 	      </div>
 	      
               <div class="sidePanel" id="uploadPanel"> 
-                 coming soon
+                 upload
                   
-                
+                <form action="/file-upload" class="dropzone">
+		  <div class="fallback">
+		    <input name="file" type="file" multiple />
+		  </div>
+		</form>
               </div>
                
 
               <div class="sidePanel" id="downloadPanel"> 
-                 coming soon
-		
+                 download/ Poll
+		<form>
+			<input type="radio" name="gender" value="male" > Male<br>
+			<input type="radio" name="gender" value="female"> Female<br>
+			<input type="radio" name="gender" value="other"> Other
+			<input type="radio" name="gender" value="other"> Otherer
+		</form>
+		<canvas id="myChart"></canvas>
               </div>
 
               <div class="sidePanel" id="vcPanel"> 
-                 coming soon
+                 voice chat
               </div>
     
               <div class="sidePanel" id="userPanel"> 
@@ -77,7 +87,7 @@
   <script src="/main.js"></script>
   <script src="libraries/p5.js"></script>
   <script src="libraries/p5.dom.js"></script>
-  <!----> <script src="/paint.js"></script>
+  <script src="/paint.js"></script> 
 
 
 
