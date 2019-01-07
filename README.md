@@ -8,6 +8,8 @@ tweaking this and making a complete voice controlled UI.
 
 Updated UI design app is still under construction
 
+[Demo](https://chat-server22.herokuapp.com/)
+
 #### Notes:
 Say "dark" for night mode and "light" for light mode
 Say name of panels to change panels
